@@ -1,0 +1,31 @@
+runtime: python
+
+# the PROJECT-DIRECTORY is the one with settings.py and wsgi.py
+entrypoint: gunicorn -b :$PORT oscar_assignment.wsgi # specific to a GUnicorn HTTP server deployment
+env: flex # for Google Cloud Flexible App Engine
+
+# any environment variables you want to pass to your application.
+# accessible through os.environ['VARIABLE_NAME']
+env_variables:
+  SECRET_KEY: 'hk6w$l4l899kh%xsvz)rrybfte4gev1s$ns+r2p5$kr!ji_&i&' 
+  DEBUG: 'False' # always False for deployment
+  
+# everything after /cloudsql/ can be found by entering >> gcloud sql instances describe DATABASE-NAME << in your Terminal
+  DB_HOST: '/cloudsql/oscar-assignment:us-central1:app-db'
+  DB_PORT: '5432' # PostgreSQL port
+  DB_NAME: 'app-db'
+  DB_USER: 'postgres' # either 'postgres' (default) or one you created on the PostgreSQL instance page
+  DB_PASSWORD: 'gPOu2txqH2aGi4L4'
+  
+  STATIC_URL: 'https://storage.googleapis.com/assignment_04/static/' 
+  
+handlers:
+- url: /static
+  static_dir: static
+
+beta_settings:
+# from command >> gcloud sql instances describe DATABASE-NAME <<
+  cloud_sql_instances: oscar-assignment:us-central1:app-db
+
+runtime_config:
+  python_version: 3 
