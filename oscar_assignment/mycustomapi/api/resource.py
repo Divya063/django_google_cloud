@@ -24,6 +24,7 @@ class urlencodeSerializer(Serializer):
         'json': 'application/json',
         'jsonp': 'text/javascript',
         'xml': 'application/xml',
+        'html': 'text/html',
         'yaml': 'text/yaml',
         'plist': 'application/x-plist',
         'urlencode': 'application/x-www-form-urlencoded',
