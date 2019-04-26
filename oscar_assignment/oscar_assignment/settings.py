@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
 
     'oscar-assignment.appspot.com',
     '127.0.0.1',
+    'localhost:8000',
 
 ]
 
@@ -162,10 +163,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-#STATIC_URL = 'https://storage.googleapis.com/assignment_04/static/'
+STATIC_URL = 'https://storage.googleapis.com/assignment_04/static/'
 
-#STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'assignment_04')
-STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'assignment_04')
+#STATIC_URL = '/static/'
 
 #STATIC_ROOT = 'static/'
 #STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'assignment_04')

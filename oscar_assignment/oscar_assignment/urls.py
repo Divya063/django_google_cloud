@@ -17,12 +17,16 @@ from django.contrib import admin
 from django.urls import include, path
 from oscarapi.app import application as api
 from oscar.app import application
+from tastypie.api import Api
+from mycustomapi.api.resource import MyModelResource
 
+v1_api = Api(api_name='v1')
+v1_api.register(MyModelResource())
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('oscarapi/', api.urls),
-    path('oscarapi/', include('mycustomapi.urls')),
+    path('oscarapi/', include(v1_api.urls)),
     path('pages/', include('django.contrib.flatpages.urls')),
     path('', application.urls),
 ]
