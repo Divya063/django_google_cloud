@@ -18,10 +18,11 @@ from django.urls import include, path
 from oscarapi.app import application as api
 from oscar.app import application
 from tastypie.api import Api
-from mycustomapi.api.resource import MyModelResource
+from mycustomapi.api.resource import MyModelResource, MyPutResource
 
 v1_api = Api(api_name='v1')
 v1_api.register(MyModelResource())
+v1_api.register(MyPutResource())
 
 urlpatterns = [
     path('admin/', admin.site.urls),

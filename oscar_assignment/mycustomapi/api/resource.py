@@ -49,6 +49,17 @@ class MyModelResource(ModelResource):
 		default_format = "application/json"
 		serializer = urlencodeSerializer()
 		authorization = Authorization()
+
+class MyPutResource(ModelResource):
+    class Meta:
+        queryset = UserAddress.objects.all()
+        default_format = "application/json"
+        serializer = urlencodeSerializer()
+        allowed_methods = ('put')
+        resource_name = 'put_request'
+        authorization = Authorization()
+
+
 	
 
     	#permission_classes = (IsOwner,)
